@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entity\" />
+    <None Remove="BO\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Microsoft.Extensions.Configuration" />
+    <None Remove="Entities\ResponseCoinmarketcap\" />
+    <None Remove="Entities\GetMarketParis\" />
+    <None Remove="AutoMapper" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="BO\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Entities\ResponseCoinmarketcap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CryptocurrencyPrice.Utilities\CryptocurrencyPrice.Utilities.csproj" />
+    <ProjectReference Include="..\CryptocurrencyPrice.Entities\CryptocurrencyPrice.Entities.csproj" />
+  </ItemGroup>
+</Project>

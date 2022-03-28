@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BO\" />
+    <None Remove="Interfaces\" />
+    <None Remove="AutoMapper" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BO\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CryptocurrencyPrice.Utilities\CryptocurrencyPrice.Utilities.csproj" />
+    <ProjectReference Include="..\CryptocurrencyPrice.Entities\CryptocurrencyPrice.Entities.csproj" />
+    <ProjectReference Include="..\CryptocurrencyPrice.Coinmarketcap\CryptocurrencyPrice.Coinmarketcap.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+</Project>
