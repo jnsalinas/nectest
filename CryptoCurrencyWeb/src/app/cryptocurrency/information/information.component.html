@@ -1,0 +1,46 @@
+<app-spinner [show]=showLoader></app-spinner>
+<div class="container-fluid">
+    <div class="fade-in">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="fa fa-align-justify"></i> Lista de ultimas cotizaciones
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>24%</th>
+                                    <th>7d%</th>
+                                    <th>Market Cap</th>
+                                    <th>Volume(24H)</th>
+                                    <th>Circulating Supply</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listCryptocurrencyQuotesLatest">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name}} <span>({{item.symbol}})</span></td>
+                                    <td>{{item.listQuote[0]?.price}}</td>
+                                    <td>{{item.listQuote[0]?.percentChange24h}}</td>
+                                    <td>{{item.listQuote[0]?.percentChange7d}}</td>
+                                    <td>{{item.listQuote[0]?.marketCap}}</td>
+                                    <td>{{item.listQuote[0]?.volume24h}}</td>
+                                    <td>{{item.circulatingSupply}}</td>
+                                </tr>           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
