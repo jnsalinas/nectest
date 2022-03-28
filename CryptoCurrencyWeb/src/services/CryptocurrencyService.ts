@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GetCryptocurrencyQuotesLatestMP } from 'src/models/MP/GetCryptocurrencyQuotesLatestMP';
+import { GetCryptocurrencyQuotesMP } from 'src/models/MP/GetCryptocurrencyQuotesMP';
+import { GetPriceConversionMP } from 'src/models/MP/GetPriceConversionMP';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -9,7 +10,12 @@ import { BaseService } from './base.service';
 export class CryptocurrencyService {
   constructor(private baseService: BaseService) {   }
 
-  GetCryptocurrencyQuotesLatestMP(): Observable<GetCryptocurrencyQuotesLatestMP> {
+  GetCryptocurrencyQuotes(): Observable<GetCryptocurrencyQuotesMP> {
     return this.baseService.executeGet("cryptocurrency/GetCryptocurrencyQuotes");
   }
+
+  GetPriceConversion(): Observable<GetPriceConversionMP> {
+    return this.baseService.executeGet("cryptocurrency/GetPriceConversion");
+  }
+  
 }

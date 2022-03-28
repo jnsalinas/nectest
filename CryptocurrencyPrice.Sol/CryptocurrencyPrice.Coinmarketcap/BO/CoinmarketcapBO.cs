@@ -10,7 +10,6 @@ using System.Linq;
 using CryptocurrencyPrice.Coinmarketcap.Entities.ResponseCoinmarketcap;
 using CryptocurrencyPrice.Entities.VM;
 using System.Collections;
-using CryptocurrencyPrice.Coinmarketcap.Entities.PriceConversion;
 using AutoMapper;
 
 namespace CryptocurrencyPrice.Coinmarketcap.BO

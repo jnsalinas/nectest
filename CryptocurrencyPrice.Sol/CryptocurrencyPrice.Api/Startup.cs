@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AutoMapper.Configuration;
+using Microsoft.OpenApi.Models;
 
 namespace CryptocurrencyPrice.Api
 {
@@ -34,6 +35,26 @@ namespace CryptocurrencyPrice.Api
             services.AddControllers();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Pruebas .Net Core + Angular",
+                    Description = "Consumo de servicio de Coinmarketcap y se expone información para front desarrollado en Angular",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Nicolas Salinas Galindo (Linkin)",
+                        Url = new Uri("https://www.linkedin.com/in/jnsalinasgo")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Github repositorio",
+                        Url = new Uri("https://github.com/jnsalinas/nectest")
+                    }
+                });
+            });
 
             services.AddCors(options =>
             {
@@ -58,6 +79,8 @@ namespace CryptocurrencyPrice.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseCors("CorsPolicy");

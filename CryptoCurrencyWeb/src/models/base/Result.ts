@@ -4,4 +4,5 @@ export enum Result{
 	,GenericError
 	,InvalidSession
 	,LogicError
+	,ConnectionApiError
 }
