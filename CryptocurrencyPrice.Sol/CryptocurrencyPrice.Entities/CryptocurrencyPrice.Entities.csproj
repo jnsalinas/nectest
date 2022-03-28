@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="VM\" />
+    <None Remove="MP\" />
+    <None Remove="MP\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VM\" />
+    <Folder Include="MP\" />
+    <Folder Include="MP\Base\" />
+  </ItemGroup>
+</Project>
