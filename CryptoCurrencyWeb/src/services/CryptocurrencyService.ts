@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GetCryptocurrencyQuotesMP } from 'src/models/MP/GetCryptocurrencyQuotesMP';
-import { GetPriceConversionMP } from 'src/models/MP/GetPriceConversionMP';
+import { GetCryptocurrencyQuotesOut } from 'src/models/MP/GetCryptocurrencyQuotesOut';
+import { GetPriceConversionOut } from 'src/models/MP/GetPriceConversionOut';
+import { GetCryptocurrenciesOut } from 'src/models/MP/GetCryptocurrenciesOut';
 import { BaseService } from './base.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,20 @@ import { BaseService } from './base.service';
 export class CryptocurrencyService {
   constructor(private baseService: BaseService) {   }
 
-  GetCryptocurrencyQuotes(): Observable<GetCryptocurrencyQuotesMP> {
-    return this.baseService.executeGet("cryptocurrency/GetCryptocurrencyQuotes");
+  GetCryptocurrencyQuotes(cryptocurrencies: string): Observable<GetCryptocurrencyQuotesOut> {
+    let params = new HttpParams().set('cryptocurrencies', cryptocurrencies);
+    return this.baseService.executeGet("cryptocurrency/GetCryptocurrencyQuotes", params);
   }
 
-  GetPriceConversion(): Observable<GetPriceConversionMP> {
-    return this.baseService.executeGet("cryptocurrency/GetPriceConversion");
+  GetPriceConversion(crypto: string, amout: number): Observable<GetPriceConversionOut> {
+    let params = new HttpParams().set('crypto', crypto).set('amount', amout);
+    return this.baseService.executeGet("cryptocurrency/GetPriceConversion", params);
   }
+
+  GetCryptocurrencies(): Observable<GetCryptocurrenciesOut> {
+    return this.baseService.executeGet("cryptocurrency/GetCryptocurrencies");
+  }
+
+  
   
 }

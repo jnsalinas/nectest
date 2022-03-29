@@ -23,8 +23,18 @@ namespace CryptocurrencyPrice.Api.Controllers
         /// Get cryptocurrencies information
         /// </summary>
         /// <returns></returns>
+        [HttpGet("GetCryptocurrencies")]
+        public IActionResult GetCryptocurrencies()
+        {
+            return new ObjectResult(_iCryptocurrencyBO.GetCryptocurrencies());
+        }
+
+        /// <summary>
+        /// Get cryptocurrencies information
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetCryptocurrencyQuotes")]
-        public IActionResult GetCryptocurrencyQuotes(string cryptocurrencies = "BTC,ETH,BNB,USDT,ADA")
+        public IActionResult GetCryptocurrencyQuotes(string cryptocurrencies)
         {
             return new ObjectResult(_iCryptocurrencyBO.GetCryptocurrencyQuotes(cryptocurrencies));
         }
@@ -34,7 +44,7 @@ namespace CryptocurrencyPrice.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetPriceConversion")]
-        public IActionResult GetPriceConversion(string crypto = "BTC", double amount = 10)
+        public IActionResult GetPriceConversion(string crypto, double amount)
         {
             if (!string.IsNullOrEmpty(crypto) && amount != double.MinValue && amount > double.MinValue)
             {

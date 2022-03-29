@@ -4,7 +4,10 @@ using CryptocurrencyPrice.Entities.VM;
 
 namespace CryptocurrencyPrice.Entities.MP
 {
-    public class GetCryptocurrencyQuotesLatestMP : BaseGetListOut<CryptocurrencyVM>
+    /// <summary>
+    /// out information crypto
+    /// </summary>
+    public class GetCryptocurrenciesOut: BaseGetListOut<CryptocurrencyVM>
     {
     }
 }

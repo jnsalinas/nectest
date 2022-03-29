@@ -14,7 +14,6 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CryptocurrencyPrice.Utilities\CryptocurrencyPrice.Utilities.csproj" />
     <ProjectReference Include="..\CryptocurrencyPrice.Entities\CryptocurrencyPrice.Entities.csproj" />
     <ProjectReference Include="..\CryptocurrencyPrice.Coinmarketcap\CryptocurrencyPrice.Coinmarketcap.csproj" />
   </ItemGroup>

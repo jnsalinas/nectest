@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { InformationComponent } from './information/information.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InformationComponent } from './information/information.component';
     RouterModule,
     CryptocurrencyRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot(),
   ]
 })
 export class CryptocurrencyModule { }

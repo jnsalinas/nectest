@@ -7,6 +7,7 @@ namespace CryptocurrencyPrice.Coinmarketcap.Interfaces
 {
     public interface ICoinmarketcapBO
     {
+        List<CryptocurrencyVM> GetCryptocurrencies();
         List<CryptocurrencyVM> GetCryptocurrencyQuotes(string currencies);
         CryptocurrencyVM GetPriceConversion(string crypto, double amount);
     }

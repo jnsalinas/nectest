@@ -6,8 +6,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-2">
-                                <i class="fa fa-align-justify"></i> 2. Lista de ultimas cotizaciones
+                            <div class="col-md-12">
+                                <i class="fa fa-align-justify"></i> 2. Lista de ultimas cotizaciones (Criptos configurables en environment)
                             </div>
                         </div>
                     </div>
@@ -57,16 +57,20 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- TODO: poner la lista de criptomoneas seleccione -->
                         <form [formGroup]="formConversion">
                             <div class="row">
-                                <div class="col-md-1">
-                                    <label class="required">Criptonomeda:</label>
-                                    <!-- <input class="form-control" type="text" maxlength="250" formControlName="name"> -->
+                                <div class="col-md-2">
+                                    <select type="text" class="form-control" formControlName="crypto">
+                                        <option value="" disabled selected>Criptomoneda...</option>
+                                        <option *ngFor="let item of listCryptocurrencies" value="{{item.symbol}}">{{item.name}}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="required">Cantidad:</label>
-                                    <input class="form-control" type="number" formControlName="amount">
+                                    <input placeholder="Cantidad" class="form-control" type="number" formControlName="amount" onkeypress="">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-primary align-bottom" (click)="GetPriceConversion()">Convertir</button>
                                 </div>
                             </div>
                         </form>

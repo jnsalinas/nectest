@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
+  { path: '',
+  redirectTo: 'Cryptocurrency',
+  pathMatch: 'full'
+},
   {
     path: '',
     data: {
-      title: 'Home'
+      title: 'Pruenas NEC Nicolas Salinas'
     },
     children: [
       {

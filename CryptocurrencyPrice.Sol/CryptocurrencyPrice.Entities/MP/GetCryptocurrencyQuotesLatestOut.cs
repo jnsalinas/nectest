@@ -4,10 +4,7 @@ using CryptocurrencyPrice.Entities.VM;
 
 namespace CryptocurrencyPrice.Entities.MP
 {
-    /// <summary>
-    /// Method parameter to return result methot api
-    /// </summary>
-    public class GetPriceConversionMP : BaseGetOut<CryptocurrencyVM>
+    public class GetCryptocurrencyQuotesLatestOut : BaseGetListOut<CryptocurrencyVM>
     {
     }
 }

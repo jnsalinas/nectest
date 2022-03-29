@@ -41,6 +41,23 @@ namespace CryptocurrencyPrice.Coinmarketcap.BO
         #endregion
 
         #region public methods
+
+        public List<CryptocurrencyVM> GetCryptocurrencies()
+        {
+            #region create url
+            var URL = new UriBuilder(_apiURL + "cryptocurrency/map"); 
+            #endregion
+
+            ResponseService response = HttpRequestHelper.GetRequest<ResponseService>(URL.ToString(), headers).Result;
+            List<CryptocurrencyVM> listCryptocurrencyVM = new List<CryptocurrencyVM>();
+            if (response.Status != null && response.Status.Code.Equals(0))
+            {
+                listCryptocurrencyVM = JsonConvert.DeserializeObject<List<CryptocurrencyVM>>(response.Data.ToString());
+            }
+
+            return listCryptocurrencyVM;
+        }
+
         /// <summary>
         /// Request cryptocurrency/quotes/latest and return information with internal estructure
         /// </summary>
@@ -62,14 +79,18 @@ namespace CryptocurrencyPrice.Coinmarketcap.BO
 
             if (response.Status != null && response.Status.Code.Equals(0))
             {
+                CryptocurrencyVM newCryptocurrencyVM;
+                QuoteResponse quoteResponseUSD;
+                CryptocurrencyResponse itemCryptocurrencyResponse;
+                QuoteVM itemQuoteVM;
                 foreach (var item in currencies.Split(',').ToList())
                 {
                     //problems with structure response, with objects dynamics and deserialize objects this problem is solve
-                    CryptocurrencyResponse itemCryptocurrencyResponse = JsonConvert.DeserializeObject<CryptocurrencyResponse>(response.Data[item].ToString());
-                    QuoteResponse quoteResponseUSD = JsonConvert.DeserializeObject<QuoteResponse>(itemCryptocurrencyResponse.Quote["USD"].ToString());
+                    itemCryptocurrencyResponse = JsonConvert.DeserializeObject<CryptocurrencyResponse>(response.Data[item].ToString());
+                    quoteResponseUSD = JsonConvert.DeserializeObject<QuoteResponse>(itemCryptocurrencyResponse.Quote["USD"].ToString());
 
-                    CryptocurrencyVM newCryptocurrencyVM = _mapper.Map<CryptocurrencyVM>(itemCryptocurrencyResponse);
-                    QuoteVM itemQuoteVM = _mapper.Map<QuoteVM>(quoteResponseUSD);
+                    newCryptocurrencyVM = _mapper.Map<CryptocurrencyVM>(itemCryptocurrencyResponse);
+                    itemQuoteVM = _mapper.Map<QuoteVM>(quoteResponseUSD);
                     itemQuoteVM.Currency = "USD";
                     newCryptocurrencyVM.ListQuote = new List<QuoteVM>() { itemQuoteVM };
 

@@ -6,7 +6,8 @@ namespace CryptocurrencyPrice.Business.Interfaces
 {
     public interface ICryptocurrencyBO
     {
-        GetCryptocurrencyQuotesLatestMP GetCryptocurrencyQuotes(string cryptocurrencies);
-        GetPriceConversionMP GetPriceConversion(string crypto, double amount);
+        GetCryptocurrencyQuotesLatestOut GetCryptocurrencyQuotes(string cryptocurrencies);
+        GetCryptocurrenciesOut GetCryptocurrencies();
+        GetPriceConversionOut GetPriceConversion(string crypto, double amount);
     }
 }

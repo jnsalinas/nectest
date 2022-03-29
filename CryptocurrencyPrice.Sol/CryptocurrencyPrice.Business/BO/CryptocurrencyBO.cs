@@ -21,16 +21,32 @@ namespace CryptocurrencyPrice.Business.BO
             _iCoinmarketcapBO = iCoinmarketcapBO;
         }
 
+
         /// <summary>
         /// return information to cryptocurrencies
         /// </summary>
         /// <param name="cryptocurrencies"></param>
         /// <returns></returns>
-        public GetCryptocurrencyQuotesLatestMP GetCryptocurrencyQuotes(string cryptocurrencies)
+        public GetCryptocurrenciesOut GetCryptocurrencies()
+        {
+            List<CryptocurrencyVM> responseCoinMarketcap = _iCoinmarketcapBO.GetCryptocurrencies();
+
+            return new GetCryptocurrenciesOut()
+            {
+                ListResult = responseCoinMarketcap
+            };
+        }
+
+        /// <summary>
+        /// return information to cryptocurrencies
+        /// </summary>
+        /// <param name="cryptocurrencies"></param>
+        /// <returns></returns>
+        public GetCryptocurrencyQuotesLatestOut GetCryptocurrencyQuotes(string cryptocurrencies)
         {
             List<CryptocurrencyVM> responseCoinMarketcap = _iCoinmarketcapBO.GetCryptocurrencyQuotes(cryptocurrencies);
 
-            return new GetCryptocurrencyQuotesLatestMP() {
+            return new GetCryptocurrencyQuotesLatestOut() {
                  ListResult = responseCoinMarketcap
             };
         }
@@ -41,11 +57,11 @@ namespace CryptocurrencyPrice.Business.BO
         /// <param name="crypto"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public GetPriceConversionMP GetPriceConversion(string crypto, double amount)
+        public GetPriceConversionOut GetPriceConversion(string crypto, double amount)
         {
             CryptocurrencyVM responsePriceConversion = _iCoinmarketcapBO.GetPriceConversion(crypto, amount);
 
-            return new GetPriceConversionMP()
+            return new GetPriceConversionOut()
             {
                 Entity = responsePriceConversion
             };

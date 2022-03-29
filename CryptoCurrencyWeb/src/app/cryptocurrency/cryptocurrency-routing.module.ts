@@ -3,13 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { InformationComponent } from './information/information.component';
 
 const routes: Routes = [
-  {
-    path: 'Cryptocurrency',
-        component: InformationComponent,
-        data: {
-          title: 'Cryptocurrencies'
-        }
+  { path: '',
+    redirectTo: 'Cryptocurrency',
+    pathMatch: 'full'
+},
+{
+  path: 'Cryptocurrency',
+  component: InformationComponent,
+  data: {
+    title: 'Cryptocurrencies'
   }
+}
 ];
 
 
