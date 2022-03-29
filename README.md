@@ -1,7 +1,15 @@
 # Pruebas Nicolas Salinas Galindo
 
-Se desarrolla aplicación web en Angular 12.2.16 y
-servicio API en .NET 5.0.
+A continuación se datalla la solución de las pruebas en estas encontraran los siguientes temas: 
+
+* __Evidencias__ de la solución para el punto 2 y punto 3 del ejercicio práctico.
+* __Arquitectura__ de las soluciones con su especificación de cada capa.
+* __Especificación de solución de API__ desarrollada en .__NET 5.0.__
+  * Estructura
+  * Configuración
+* __Especificación de la solución web__ desarrollada en __Angular 12.2.16.__
+  * Estructura
+  * Configuración
 
 ## EVIDENCIAS
 
