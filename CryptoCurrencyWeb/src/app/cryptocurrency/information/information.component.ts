@@ -32,9 +32,9 @@ export class InformationComponent implements OnInit {
     this.GetCryptocurrencies();
     this.GetCryptocurrencyQuotes();
      
-    // setInterval(() => {
-    //   this.GetCryptocurrencyQuotes();
-    // }, 5000);
+    setInterval(() => {
+      this.GetCryptocurrencyQuotes();
+    }, 5000);
   }
 
   GetCryptocurrencyQuotes(){
